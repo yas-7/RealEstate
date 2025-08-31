@@ -7,6 +7,7 @@ import com.realestate.app.mapper.FlatMapper;
 import com.realestate.app.model.FlatEntity;
 import com.realestate.app.repository.ComplexRepository;
 import com.realestate.app.repository.FlatRepository;
+import com.realestate.app.util.FlatSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -22,23 +23,22 @@ public class FlatService {
 
     private ComplexRepository complexRepository;
 
-    public List<FlatDTO> getAllFlatsByComplexId(Long complexId, int page, int size, String sortProperty, String sortDirection) {
-        Sort.Direction direction = sortDirection.equalsIgnoreCase("desc") ? Sort.Direction.DESC
-                : Sort.Direction.ASC;
-        Sort sort = Sort.by(direction, sortProperty);
-        PageRequest pageRequest = PageRequest.of(page - 1, size, sort);
+    public List<FlatDTO> getAllFlatsByComplexId(Long complexId, int page, int size, FlatSortBy sortProperty, Sort.Direction sortDirection) {
+        Sort sort = sortProperty.getSort(sortDirection);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
 
         if (complexId == null) {
-            return flatRepository.findAll().stream()
+            return flatRepository.findAll(pageRequest).stream()
                     .map(FlatMapper::toDTO).toList();
         }
-        return flatRepository.findByComplexId(complexId).stream()
+
+        return flatRepository.findByComplexId(complexId, pageRequest).stream()
                 .map(FlatMapper::toDTO).toList();
     }
 
     public FlatDTO getFlat(long id) {
         FlatEntity flat = flatRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Flat with id " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Flat", id));
 
         return FlatMapper.toDTO(flat);
     }

@@ -6,6 +6,7 @@ import com.realestate.app.exception.ResourceNotFoundException;
 import com.realestate.app.mapper.ComplexMapper;
 import com.realestate.app.model.ComplexEntity;
 import com.realestate.app.repository.ComplexRepository;
+import com.realestate.app.util.ComplexSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -19,11 +20,9 @@ public class ComplexService {
     @Autowired
     private ComplexRepository complexRepository;
 
-    public List<ComplexDTO> getAllComplexes(int page, int size, String sortProperty, String sortDirection) {
-        Sort.Direction direction = sortDirection.equalsIgnoreCase("desc") ? Sort.Direction.DESC
-                : Sort.Direction.ASC;
-        Sort sort = Sort.by(direction, sortProperty);
-        PageRequest pageRequest = PageRequest.of(page - 1, size, sort);
+    public List<ComplexDTO> getAllComplexes(int page, int size, ComplexSortBy sortProperty, Sort.Direction sortDirection) {
+        Sort sort = sortProperty.getSort(sortDirection);
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
 
         return complexRepository.findAll(pageRequest).stream()
                 .map(ComplexMapper::toDTO).toList();
@@ -38,7 +37,7 @@ public class ComplexService {
 
     public ComplexDTO getComplexById(long id) {
         ComplexEntity complex = complexRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Complex with id " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Complex", id));
 
         return ComplexMapper.toDTO(complex);
     }

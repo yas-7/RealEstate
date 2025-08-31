@@ -3,7 +3,9 @@ package com.realestate.app.controller;
 import com.realestate.app.dto.ComplexCreateDTO;
 import com.realestate.app.dto.ComplexDTO;
 import com.realestate.app.service.ComplexService;
+import com.realestate.app.util.ComplexSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +20,10 @@ public class ComplexController {
 
     @GetMapping
     public List<ComplexDTO> index(
-            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "createdAt") String sortProperty,
-            @RequestParam(defaultValue = "asc") String sortDirection
+            @RequestParam(defaultValue = "CREATED_AT") ComplexSortBy sortProperty,
+            @RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
     ) {
         return complexService.getAllComplexes(page, size, sortProperty, sortDirection);
     }
