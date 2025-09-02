@@ -31,6 +31,12 @@ public class FlatEntity {
     @Column(name = "area_total")
     private double areaTotal;
 
+    @Column(name = "actual_price_total")
+    private int actualPriceTotal;
+
+    @Column(name = "actual_price_per_m2")
+    private int actualPricePerM2;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDate createdAt;

@@ -10,6 +10,8 @@ public record FlatDTO(
         int floor,
         int rooms,
         double areaTotal,
+        int actualPriceTotal,
+        int actualPricePerM2,
         LocalDate createdAt
 ) {
 }

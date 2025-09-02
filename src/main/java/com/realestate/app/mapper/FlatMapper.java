@@ -14,6 +14,8 @@ public class FlatMapper {
                 flat.getFloor(),
                 flat.getRooms(),
                 flat.getAreaTotal(),
+                flat.getActualPriceTotal(),
+                flat.getActualPricePerM2(),
                 flat.getCreatedAt()
         );
     }
@@ -26,6 +28,8 @@ public class FlatMapper {
         flat.setFloor(dto.floor());
         flat.setRooms(dto.rooms());
         flat.setAreaTotal(dto.areaTotal());
+        flat.setActualPriceTotal(dto.actualPriceTotal());
+        flat.setActualPricePerM2(dto.actualPricePerM2());
 
         return flat;
     }

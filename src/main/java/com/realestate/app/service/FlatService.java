@@ -11,6 +11,7 @@ import com.realestate.app.util.FlatSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +24,13 @@ public class FlatService {
 
     private ComplexRepository complexRepository;
 
-    public List<FlatDTO> getAllFlatsByComplexId(Long complexId, int page, int size, FlatSortBy sortProperty, Sort.Direction sortDirection) {
+    public List<FlatDTO> getAllFlats(
+            @Nullable Long complexId,
+            int page,
+            int size,
+            FlatSortBy sortProperty,
+            Sort.Direction sortDirection
+    ) {
         Sort sort = sortProperty.getSort(sortDirection);
         PageRequest pageRequest = PageRequest.of(page, size, sort);
 
@@ -32,7 +39,7 @@ public class FlatService {
                     .map(FlatMapper::toDTO).toList();
         }
 
-        return flatRepository.findByComplexId(complexId, pageRequest).stream()
+        return flatRepository.findAllByComplexId(complexId, pageRequest).stream()
                 .map(FlatMapper::toDTO).toList();
     }
 

@@ -6,6 +6,8 @@ public record FlatCreateDTO(
         String number,
         int floor,
         int rooms,
-        double areaTotal
+        double areaTotal,
+        int actualPriceTotal,
+        int actualPricePerM2
 ) {
 }

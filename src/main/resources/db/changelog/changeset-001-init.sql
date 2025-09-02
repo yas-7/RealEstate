@@ -19,6 +19,8 @@ CREATE TABLE flats (
   floor        INT  NOT NULL,
   rooms        INT  NOT NULL,
   area_total   NUMERIC(8,2) NOT NULL,
+  actual_price_total    INT NOT NULL,
+  actual_price_per_m2   INT NOT NULL,
   created_at   TIMESTAMP NOT NULL DEFAULT now(),
   CONSTRAINT uq_flats_complex_building_number UNIQUE (complex_id, building, number)
 );

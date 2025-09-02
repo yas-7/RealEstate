@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface FlatRepository extends JpaRepository<FlatEntity, Long> {
-    List<FlatEntity> findByComplexId(long complexId, PageRequest pageRequest);
+    List<FlatEntity> findAllByComplexId(Long complexId, PageRequest pageRequest);
 }

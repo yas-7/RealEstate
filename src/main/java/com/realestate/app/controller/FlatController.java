@@ -18,14 +18,14 @@ public class FlatController {
     private FlatService flatService;
 
     @GetMapping
-    public List<FlatDTO> getByComplexId(
+    public List<FlatDTO> index(
             @RequestParam(required = false) Long complexId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "CREATED_AT") FlatSortBy sortProperty,
             @RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
     ) {
-        return flatService.getAllFlatsByComplexId(complexId, page, size, sortProperty, sortDirection);
+        return flatService.getAllFlats(complexId, page, size, sortProperty, sortDirection);
     }
 
     @GetMapping("/{flatId}")
@@ -42,6 +42,4 @@ public class FlatController {
     public void destroy(@PathVariable long id) {
         flatService.delete(id);
     }
-
-
 }
