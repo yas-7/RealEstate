@@ -16,8 +16,12 @@ import java.util.List;
 @Service
 public class FlatPriceHistoryService {
 
+    private final FlatPriceHistoryRepository flatPriceHistoryRepository;
+
     @Autowired
-    private FlatPriceHistoryRepository flatPriceHistoryRepository;
+    public FlatPriceHistoryService(FlatPriceHistoryRepository flatPriceHistoryRepository) {
+        this.flatPriceHistoryRepository = flatPriceHistoryRepository;
+    }
 
     public List<FlatPriceHistoryDTO> getFlatPriceHistoryByFlatId(
             Long id,

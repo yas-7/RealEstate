@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: real-estate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  datasource:
+    url: ${pg_url}
+    driver-class-name: org.postgresql.Driver
+    username: ${pg_user}
+    password: ${pg_password}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  output:
+    ansi:
+      enabled: always
+
+complexes:
+  primKvartal:
+    url: https://primkvartal.ru/ajax/filterOnSale?filter%5BtypeId%5D=1&page=3&loadAllPagesToCurrent=1

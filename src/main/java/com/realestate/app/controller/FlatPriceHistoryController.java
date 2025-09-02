@@ -14,10 +14,15 @@ import java.util.List;
 @RequestMapping("api/history")
 public class FlatPriceHistoryController {
 
+    private final FlatPriceHistoryService flatPriceHistoryService;
+
     @Autowired
-    private FlatPriceHistoryService flatPriceHistoryService;
+    public FlatPriceHistoryController(FlatPriceHistoryService flatPriceHistoryService) {
+        this.flatPriceHistoryService = flatPriceHistoryService;
+    }
 
     @GetMapping
+    @CrossOrigin(origins = {"http://localhost:5173"})
     public List<FlatPriceHistoryDTO> index(
             @RequestParam Long flatId,
             @RequestParam(defaultValue = "0") int page,

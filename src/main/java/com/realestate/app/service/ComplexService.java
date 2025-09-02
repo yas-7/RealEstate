@@ -17,8 +17,12 @@ import java.util.List;
 @Service
 public class ComplexService {
 
+    private final ComplexRepository complexRepository;
+
     @Autowired
-    private ComplexRepository complexRepository;
+    public ComplexService(ComplexRepository complexRepository) {
+        this.complexRepository = complexRepository;
+    }
 
     public List<ComplexDTO> getAllComplexes(int page, int size, ComplexSortBy sortProperty, Sort.Direction sortDirection) {
         Sort sort = sortProperty.getSort(sortDirection);
@@ -41,11 +45,6 @@ public class ComplexService {
 
         return ComplexMapper.toDTO(complex);
     }
-
-//    public ComplexDTO updateComplex(ComplexUpdateDTO dto, long id) {
-//
-//    }
-
 
     public void deleteComplex(long id) {
         complexRepository.deleteById(id);

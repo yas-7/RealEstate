@@ -1,6 +1,6 @@
 package com.realestate.app.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record FlatDTO(
         long id,
@@ -12,6 +12,6 @@ public record FlatDTO(
         double areaTotal,
         int actualPriceTotal,
         int actualPricePerM2,
-        LocalDate createdAt
+        LocalDateTime createdAt
 ) {
 }

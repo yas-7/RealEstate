@@ -14,10 +14,15 @@ import java.util.List;
 @RequestMapping("api/flats")
 public class FlatController {
 
+    private final FlatService flatService;
+
     @Autowired
-    private FlatService flatService;
+    public FlatController(FlatService flatService) {
+        this.flatService = flatService;
+    }
 
     @GetMapping
+    @CrossOrigin(origins = {"http://localhost:5173"})
     public List<FlatDTO> index(
             @RequestParam(required = false) Long complexId,
             @RequestParam(defaultValue = "0") int page,

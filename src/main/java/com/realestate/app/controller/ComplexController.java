@@ -4,6 +4,8 @@ import com.realestate.app.dto.ComplexCreateDTO;
 import com.realestate.app.dto.ComplexDTO;
 import com.realestate.app.service.ComplexService;
 import com.realestate.app.util.ComplexSortBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -15,10 +17,16 @@ import java.util.List;
 @RequestMapping("api/complexes")
 public class ComplexController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ComplexController.class);
+    private final ComplexService complexService;
+
     @Autowired
-    private ComplexService complexService;
+    public ComplexController(ComplexService complexService) {
+        this.complexService = complexService;
+    }
 
     @GetMapping
+    @CrossOrigin(origins = {"http://localhost:5173"})
     public List<ComplexDTO> index(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -38,11 +46,6 @@ public class ComplexController {
     public ComplexDTO create(@RequestBody ComplexCreateDTO dto) {
         return complexService.createComplex(dto);
     }
-
-//    @PutMapping("/{id}")
-//    public ComplexDTO update(@RequestBody ComplexUpdateDTO, @PathVariable long id) {
-//        return complexService.updateComplex(dto, id);
-//    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

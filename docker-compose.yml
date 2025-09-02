@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:16.3
+    environment:
+      POSTGRES_DB: "flats-db"
+      POSTGRES_USER: "flats-user"
+      POSTGRES_PASSWORD: "flats-password"
+    ports:
+      - "5432:5432"
