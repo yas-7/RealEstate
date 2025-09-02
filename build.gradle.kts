@@ -25,6 +25,8 @@ repositories {
 }
 
 dependencies {
+	implementation("org.jsoup:jsoup:1.17.2")
+	implementation("org.apache.httpcomponents.client5:httpclient5:5.5")
 	implementation("org.postgresql:postgresql:42.7.7")
 	implementation("org.liquibase:liquibase-core")
 	compileOnly("org.projectlombok:lombok")
