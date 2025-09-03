@@ -22,13 +22,12 @@ public class FlatPriceHistoryController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = {"http://localhost:5173"})
     public List<FlatPriceHistoryDTO> index(
             @RequestParam Long flatId,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "365") int size,
             @RequestParam(defaultValue = "CREATED_AT") FlatPriceHistorySortBy sortProperty,
-            @RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
+            @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection
     ) {
         return flatPriceHistoryService.getFlatPriceHistoryByFlatId(flatId, page, size, sortProperty, sortDirection);
     }

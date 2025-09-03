@@ -26,12 +26,11 @@ public class ComplexController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = {"http://localhost:5173"})
     public List<ComplexDTO> index(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "CREATED_AT") ComplexSortBy sortProperty,
-            @RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
+            @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection
     ) {
         return complexService.getAllComplexes(page, size, sortProperty, sortDirection);
     }

@@ -2,13 +2,12 @@ package com.realestate.app.controller;
 
 import com.realestate.app.dto.FlatCreateDTO;
 import com.realestate.app.dto.FlatDTO;
+import com.realestate.app.dto.FlatPageDTO;
 import com.realestate.app.service.FlatService;
 import com.realestate.app.util.FlatSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/flats")
@@ -22,13 +21,12 @@ public class FlatController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = {"http://localhost:5173"})
-    public List<FlatDTO> index(
+    public FlatPageDTO index(
             @RequestParam(required = false) Long complexId,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "CREATED_AT") FlatSortBy sortProperty,
-            @RequestParam(defaultValue = "ASC") Sort.Direction sortDirection
+            @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection
     ) {
         return flatService.getAllFlats(complexId, page, size, sortProperty, sortDirection);
     }

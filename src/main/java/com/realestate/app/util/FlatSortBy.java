@@ -5,7 +5,9 @@ import org.springframework.data.domain.Sort;
 public enum FlatSortBy {
     COMPLEX_ID("complexId"),
     BUILDING("building"),
-    CREATED_AT("createdAt");
+    CREATED_AT("createdAt"),
+    ACTUAL_PRICE_TOTAL("actualPriceTotal"),
+    ACTUAL_PRICE_PER_M2("actualPricePerM2");
 
     private final String property;
 
