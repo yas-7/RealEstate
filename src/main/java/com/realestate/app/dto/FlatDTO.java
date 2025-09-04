@@ -12,6 +12,6 @@ public record FlatDTO(
         double areaTotal,
         int actualPriceTotal,
         int actualPricePerM2,
-        LocalDateTime createdAt
+        LocalDateTime modifiedAt
 ) {
 }

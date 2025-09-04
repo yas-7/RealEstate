@@ -39,16 +39,4 @@ public class ComplexController {
     public ComplexDTO show(@PathVariable long id) {
         return complexService.getComplexById(id);
     }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ComplexDTO create(@RequestBody ComplexCreateDTO dto) {
-        return complexService.createComplex(dto);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void destroy(@PathVariable long id) {
-        complexService.deleteComplex(id);
-    }
 }

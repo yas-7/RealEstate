@@ -16,7 +16,7 @@ public class FlatMapper {
                 flat.getAreaTotal(),
                 flat.getActualPriceTotal(),
                 flat.getActualPricePerM2(),
-                flat.getCreatedAt()
+                flat.getModifiedAt()
         );
     }
 

@@ -19,3 +19,5 @@ spring:
 complexes:
   primKvartal:
     url: https://primkvartal.ru/ajax/filterOnSale?filter%5BtypeId%5D=1&page=3&loadAllPagesToCurrent=1
+server:
+  port: 8082

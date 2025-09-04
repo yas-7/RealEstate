@@ -72,16 +72,16 @@ public class FlatService {
         flatRepository.deleteById(flatId);
     }
 
-    public void saveEntity(FlatEntity flatEntity) {
+    public void saveEntity(FlatEntity parsedFlatEntity) {
         Optional<FlatEntity> optionalFlat = flatRepository.findByComplexIdAndBuildingAndNumber(
-                flatEntity.getComplexId(),
-                flatEntity.getBuilding(),
-                flatEntity.getNumber()
+                parsedFlatEntity.getComplexId(),
+                parsedFlatEntity.getBuilding(),
+                parsedFlatEntity.getNumber()
         );
 
         if (optionalFlat.isEmpty()) {
-            FlatEntity savedFlat = flatRepository.save(flatEntity);
-            LOG.info("Новая квартира сохранена: {}", flatEntity.getId());
+            FlatEntity savedFlat = flatRepository.save(parsedFlatEntity);
+            LOG.info("Новая квартира сохранена: {}", parsedFlatEntity.getId());
 
             FlatPriceHistoryEntity historyEntity = new FlatPriceHistoryEntity();
             historyEntity.setFlatId(savedFlat.getId());
@@ -91,8 +91,8 @@ public class FlatService {
             flatPriceHistoryRepository.save(historyEntity);
         } else {
             FlatEntity existedFlat = optionalFlat.get();
-            existedFlat.setActualPriceTotal(flatEntity.getActualPriceTotal());
-            existedFlat.setActualPricePerM2(flatEntity.getActualPricePerM2());
+            existedFlat.setActualPriceTotal(parsedFlatEntity.getActualPriceTotal());
+            existedFlat.setActualPricePerM2(parsedFlatEntity.getActualPricePerM2());
 
             flatRepository.save(existedFlat);
 

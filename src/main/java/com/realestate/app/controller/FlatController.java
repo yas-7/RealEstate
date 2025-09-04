@@ -1,6 +1,5 @@
 package com.realestate.app.controller;
 
-import com.realestate.app.dto.FlatCreateDTO;
 import com.realestate.app.dto.FlatDTO;
 import com.realestate.app.dto.FlatPageDTO;
 import com.realestate.app.service.FlatService;
@@ -34,15 +33,5 @@ public class FlatController {
     @GetMapping("/{flatId}")
     public FlatDTO show(@PathVariable long flatId) {
         return flatService.getFlat(flatId);
-    }
-
-    @PostMapping
-    public FlatDTO create(@RequestBody FlatCreateDTO dto) {
-        return flatService.create(dto);
-    }
-
-    @DeleteMapping("/{id}")
-    public void destroy(@PathVariable long id) {
-        flatService.delete(id);
     }
 }
