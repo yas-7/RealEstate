@@ -35,6 +35,8 @@ public class FlatService {
 
     public FlatPageDTO getAllFlats(
             @Nullable Long complexId,
+            @Nullable String building,
+            @Nullable String flatNumber,
             int page,
             int size,
             FlatSortBy sortProperty,
@@ -43,8 +45,8 @@ public class FlatService {
         Sort sort = sortProperty.getSort(sortDirection);
         PageRequest pageRequest = PageRequest.of(page, size, sort);
 
-        Page<FlatEntity> flatEntityPage = complexId == null ? flatRepository.findAll(pageRequest)
-                : flatRepository.findAllByComplexId(complexId, pageRequest);
+        Page<FlatEntity> flatEntityPage =
+                flatRepository.findAllByComplexIdAndBuildingAndNumber(complexId, building, flatNumber, pageRequest);
 
         return new FlatPageDTO(
                 flatEntityPage.getContent().stream().map(FlatMapper::toDTO).toList(),

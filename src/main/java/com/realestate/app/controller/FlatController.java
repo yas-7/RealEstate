@@ -22,12 +22,14 @@ public class FlatController {
     @GetMapping
     public FlatPageDTO index(
             @RequestParam(required = false) Long complexId,
+            @RequestParam(required = false) String building,
+            @RequestParam(required = false) String flatNumber,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
-            @RequestParam(defaultValue = "CREATED_AT") FlatSortBy sortProperty,
+            @RequestParam(defaultValue = "MODIFIED_AT") FlatSortBy sortProperty,
             @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection
     ) {
-        return flatService.getAllFlats(complexId, page, size, sortProperty, sortDirection);
+        return flatService.getAllFlats(complexId, building, flatNumber, page, size, sortProperty, sortDirection);
     }
 
     @GetMapping("/{flatId}")
