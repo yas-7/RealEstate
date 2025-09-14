@@ -5,7 +5,7 @@ import com.realestate.app.dto.FlatPriceHistoryDTO;
 import com.realestate.app.mapper.FlatPriceHistoryMapper;
 import com.realestate.app.model.FlatPriceHistoryEntity;
 import com.realestate.app.repository.FlatPriceHistoryRepository;
-import com.realestate.app.util.FlatPriceHistorySortBy;
+import com.realestate.app.sort.FlatPriceHistorySortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

@@ -3,7 +3,7 @@ package com.realestate.app.controller;
 import com.realestate.app.dto.FlatDTO;
 import com.realestate.app.dto.FlatPageDTO;
 import com.realestate.app.service.FlatService;
-import com.realestate.app.util.FlatSortBy;
+import com.realestate.app.sort.FlatSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;

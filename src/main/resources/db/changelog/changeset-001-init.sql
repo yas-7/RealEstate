@@ -35,7 +35,8 @@ CREATE TABLE flat_price_history (
 );
 
 --changeset re:004-indexes
-CREATE INDEX idx_flats_complex_building ON flats (complex_id, building);
+CREATE INDEX idx_flats_building ON flats (building);
+CREATE INDEX idx_flats_number ON flats (number);
+CREATE INDEX idx_flats_actual_price_total ON flats (actual_price_total);
+CREATE INDEX idx_flats_actual_price_per_m2 ON flats (actual_price_per_m2);
 CREATE INDEX idx_price_hist_flat_created_at ON flat_price_history (flat_id, created_at);
-CREATE INDEX idx_price_hist_price_total ON flat_price_history (price_total, created_at);
-CREATE INDEX idx_price_hist_price_per_m2 ON flat_price_history (price_per_m2, created_at);

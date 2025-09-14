@@ -6,7 +6,7 @@ import com.realestate.app.exception.ResourceNotFoundException;
 import com.realestate.app.mapper.ComplexMapper;
 import com.realestate.app.model.ComplexEntity;
 import com.realestate.app.repository.ComplexRepository;
-import com.realestate.app.util.ComplexSortBy;
+import com.realestate.app.sort.ComplexSortBy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

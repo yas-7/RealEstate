@@ -1,4 +1,4 @@
-package com.realestate.app.util;
+package com.realestate.app.sort;
 
 import org.springframework.data.domain.Sort;
 

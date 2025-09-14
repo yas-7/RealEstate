@@ -12,10 +12,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-  output:
-    ansi:
-      enabled: always
-
 complexes:
   primKvartal:
     url: https://primkvartal.ru/ajax/filterOnSale?filter%5BtypeId%5D=1&page=3&loadAllPagesToCurrent=1

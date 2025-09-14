@@ -1,14 +1,12 @@
 package com.realestate.app.controller;
 
-import com.realestate.app.dto.ComplexCreateDTO;
 import com.realestate.app.dto.ComplexDTO;
 import com.realestate.app.service.ComplexService;
-import com.realestate.app.util.ComplexSortBy;
+import com.realestate.app.sort.ComplexSortBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

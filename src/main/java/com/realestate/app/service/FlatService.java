@@ -9,7 +9,7 @@ import com.realestate.app.model.FlatEntity;
 import com.realestate.app.model.FlatPriceHistoryEntity;
 import com.realestate.app.repository.FlatPriceHistoryRepository;
 import com.realestate.app.repository.FlatRepository;
-import com.realestate.app.util.FlatSortBy;
+import com.realestate.app.sort.FlatSortBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
